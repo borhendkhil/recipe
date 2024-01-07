@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Recipe" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorSecondary" >@color/white</item>
+    </style>
+
+    <style name="AppBottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="android:background">@null</item>
+        <item name="android:paddingTop">12dp</item>
+    </style>
+
+    <style name="Theme.Recipe" parent="Base.Theme.Recipe" />
+    <style name="btn" parent="Theme.AppCompat.Light.NoActionBar"/>
+
+
+</resources>
