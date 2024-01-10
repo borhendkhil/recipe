@@ -8,7 +8,7 @@ public class Ingredient {
     private String unit;
     private String recipeid;
 
-    public Ingredient(int id, String name, String quantity, String unit, String recipeid) {
+    public Ingredient() {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
@@ -62,4 +62,6 @@ public class Ingredient {
     public void setRecipeid(String recipeid) {
         this.recipeid = recipeid;
     }
+
+
 }

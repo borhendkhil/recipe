@@ -53,9 +53,6 @@ public class UserRecycler extends RecyclerView.Adapter<UserRecycler.VHolder> {
                 notifyDataSetChanged();
             }
         });
-
-
-
     }
 
     @Override

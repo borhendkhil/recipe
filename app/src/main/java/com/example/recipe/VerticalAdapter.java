@@ -60,6 +60,7 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Recipedetails.class);
+
                 intent.putExtra("recipeName", recipe.getName());
                 intent.putExtra("recipeCalory", recipe.getCalory());
                 intent.putExtra("id", recipe.getId());
