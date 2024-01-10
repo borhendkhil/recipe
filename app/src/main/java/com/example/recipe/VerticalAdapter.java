@@ -80,8 +80,6 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.ViewHo
         TextView titel ,calory ,description;
         ImageView image;
         public ViewHolder(@NonNull View itemView) {
-
-
                 super(itemView);
                 calory= itemView.findViewById(R.id.calory);
                 titel = itemView.findViewById(R.id.titel);

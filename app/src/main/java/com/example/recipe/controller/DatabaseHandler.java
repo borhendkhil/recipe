@@ -94,6 +94,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.close();
     }
+    public Cursor getAllUsers(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(Utils.TABLE_NAME,
+                new String[]{
+                        Utils.COLUMN_ID,
+                        Utils.COLUMN_NOM,
+                        Utils.COLUMN_PRENOM,
+                        Utils.COLUMN_EMAIL,
+                        Utils.COLUMN_PASSWORD,
+                        Utils.COLUMN_ROLE},
+                null, null, null, null, null);
+        return cursor;
+    }
 
 
     public boolean checkUser(String email, String password){
