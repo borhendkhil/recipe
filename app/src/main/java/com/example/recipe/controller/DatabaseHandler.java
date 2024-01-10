@@ -107,6 +107,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 null, null, null, null, null);
         return cursor;
     }
+    public void deleteUser(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Utils.TABLE_NAME, Utils.COLUMN_ID + "=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
 
 
     public boolean checkUser(String email, String password){

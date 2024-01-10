@@ -1,6 +1,7 @@
 package com.example.recipe;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
@@ -13,7 +14,7 @@ import com.example.recipe.model.User;
 import java.util.ArrayList;
 
 public class AdminHome extends AppCompatActivity {
-    UserRecycler userRecycler;
+    UserRecycler adapter   ;
     DatabaseHandler db;
     RecyclerView recyclerView;
 
@@ -40,6 +41,7 @@ public class AdminHome extends AppCompatActivity {
                 user.setId(cursor.getInt(0));
 
                 user.setNom(cursor.getString(1));
+                Toast.makeText(this, user.getNom(), Toast.LENGTH_SHORT).show();
                 user.setPrenom(cursor.getString(2));
                 user.setEmail(cursor.getString(3));
                 user.setPassword(cursor.getString(4));
@@ -48,10 +50,13 @@ public class AdminHome extends AppCompatActivity {
             }
         }
 
+
         if (users.size() > 0) {
-            Toast.makeText(this, "data", Toast.LENGTH_SHORT).show();
-        userRecycler = new  UserRecycler(this, users);
-        recyclerView.setAdapter(userRecycler);
+//            Toast.makeText(this, "data", Toast.LENGTH_SHORT).show();
+        adapter = new  UserRecycler(AdminHome.this, users);
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         }
 
 

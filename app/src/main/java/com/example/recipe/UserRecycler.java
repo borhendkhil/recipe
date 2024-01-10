@@ -5,11 +5,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.recipe.controller.DatabaseHandler;
 import com.example.recipe.model.User;
 
 import java.util.ArrayList;
@@ -38,24 +40,42 @@ public class UserRecycler extends RecyclerView.Adapter<UserRecycler.VHolder> {
         holder.email.setText(String.valueOf(user.getEmail()));
 
 
+        //button delete
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseHandler db = new DatabaseHandler(context);
+                db.deleteUser(user.getId());
+
+                users.remove(holder.getAdapterPosition());
+
+
+                notifyDataSetChanged();
+            }
+        });
+
+
+
     }
 
     @Override
     public int getItemCount() {
 
-        return 5;
+        return users.size();
     }
 
 
     public class VHolder extends RecyclerView.ViewHolder{
         TextView nom;
         TextView email;
+        ImageView delete;
 
         public VHolder(@NonNull View itemView) {
             super(itemView);
 
             nom = itemView.findViewById(R.id.nom);
             email = itemView.findViewById(R.id.email);
+            delete = itemView.findViewById(R.id.delete);
 
 
         }
