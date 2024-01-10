@@ -3,6 +3,7 @@ package com.example.recipe.model;
 import android.graphics.Bitmap;
 
 public class Recipe {
+    //recipe model
     private String id;
     private String name;
     private byte[] image;

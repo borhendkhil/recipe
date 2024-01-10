@@ -1,16 +1,23 @@
 package com.example.recipe.model;
 
 public class User {
+    //user model, added ROLE attribu
     private String nom;
     private String prenom;
     private String email;
     private String password;
 
-    public User(String nom, String prenom, String email, String password) {
+    private String role;
+
+    public User() {
+    }
+//constructor
+    public User(String nom, String prenom, String email, String password, String role) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
     public String getNom() {
@@ -43,5 +50,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

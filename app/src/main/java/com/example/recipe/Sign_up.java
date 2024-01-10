@@ -60,9 +60,10 @@ public class Sign_up extends AppCompatActivity {
                     Toast.makeText(Sign_up.this, "Mot de passe ne correspond pas", Toast.LENGTH_SHORT).show();
                     cpassword.setError("Mot de passe ne correspond pas");
                 }
+                //matbadlou chy lahne, ane ma raka7tha kan bessif. el admin by default
                 else {
                     DatabaseHandler db = new DatabaseHandler(Sign_up.this);
-                    User user = new User(nomText,prenomText,emailText,passwordText);
+                    User user = new User(nomText,prenomText,emailText,passwordText,"Client");
                     db.addUser(user);
                     Toast.makeText(Sign_up.this, "compte créé avec succès", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Sign_up.this, Sign_in.class);

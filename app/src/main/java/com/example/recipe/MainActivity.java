@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.recipe.controller.DatabaseHandler;
+import com.example.recipe.model.User;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -16,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
+
                         Intent intent = new Intent(MainActivity.this, Sign_in.class);
                         startActivity(intent);
                         finish();

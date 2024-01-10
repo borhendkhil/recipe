@@ -43,7 +43,7 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.ViewHo
 
         byte[] image = recipe.getImage();
 
-        // Use Glide to load images asynchronously
+        // Use Glide to load images asynchronously2
         if (image != null && image.length > 0) {
             Glide.with(context)
                     .asBitmap()

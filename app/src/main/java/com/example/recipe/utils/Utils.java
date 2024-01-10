@@ -16,6 +16,8 @@ public class Utils {
     public static final String COLUMN_PRENOM = "prenom";
     public static final String COLUMN_EMAIL = "email";
     public static final String COLUMN_PASSWORD = "password";
+    //added role column to add admin
+    public static final String COLUMN_ROLE = "role";
 
 
 

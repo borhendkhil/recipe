@@ -76,6 +76,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     }
 
     @Override
+    //get item count and fill holder
     public int getItemCount() {
         return recipes.size();
     }

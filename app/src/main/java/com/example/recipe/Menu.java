@@ -28,6 +28,7 @@ public class Menu extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
+            //bottom nav bar navigation setup
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId()==R.id.home){
                     getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();

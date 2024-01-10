@@ -45,6 +45,7 @@ public class Addrecipe extends AppCompatActivity {
 
 
     @Override
+    //oncreate method to generate page
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addrecipe);
@@ -72,7 +73,7 @@ public class Addrecipe extends AppCompatActivity {
 
             }
         });
-
+//CRUD
         container= findViewById(R.id.container);
         button= findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {

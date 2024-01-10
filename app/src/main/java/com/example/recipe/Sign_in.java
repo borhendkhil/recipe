@@ -17,7 +17,6 @@ public class Sign_in extends AppCompatActivity {
     TextInputEditText password;
     Button signIn;
     TextView signUp;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +41,14 @@ public class Sign_in extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
-                    else {
+                    //if user is client tet3ada direct siin rahou admin w temchi l adminhome
+                    else if (db.checkAdmin(emailText, passwordText)) {
+                        Intent intent = new Intent(Sign_in.this, AdminHome.class);
+                        startActivity(intent);
+                        finish();
+                    }else {
+
+
                         Toast.makeText(Sign_in.this, "Email ou mot de passe incorrect", Toast.LENGTH_SHORT).show();
                     }
 

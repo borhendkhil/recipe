@@ -31,15 +31,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //creation tableau BD
         String CREATE_TABLE_USER = "CREATE TABLE " +
-
+//zid col role pour admin
                 Utils.TABLE_NAME + "("
                 + Utils.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + Utils.COLUMN_NOM + " TEXT,"
                 + Utils.COLUMN_PRENOM + " TEXT,"
                 + Utils.COLUMN_EMAIL + " TEXT,"
-                + Utils.COLUMN_PASSWORD + " TEXT" + ")";
+                + Utils.COLUMN_PASSWORD + " TEXT,"
+                + Utils.COLUMN_ROLE + " TEXT" + ")";
         db.execSQL(CREATE_TABLE_USER);
+        //insertion default admin. NE TOUCHE PAS YAR7AM BOUK
+        db.execSQL("INSERT INTO user (nom, prenom, email, password, role) VALUES ('admin', 'admin', 'admin', 'admin', 'Admin')");
+        //tab recipes
         String CREATE_TABLE_RECIPE = "CREATE TABLE " + Utils.Table_Recipe + "("
                 + Utils.COLUMN_ID_RECIPE + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + Utils.COLUMN_NAME_RECIPE + " TEXT,"
@@ -48,7 +53,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + Utils.COLUMN_calory_RECIPE + " TEXT,"
                 + Utils.COLUMN_CATEGORY_RECIPE + " TEXT" + ")";
         db.execSQL(CREATE_TABLE_RECIPE);
-
+//tab ingredients
         String CREATE_TABLE_INGREDIENT = "CREATE TABLE " + Utils.Table_Ingredient + "("
                 + Utils.COLUMN_ID_INGREDIENT + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + Utils.COLUMN_NAME_INGREDIENT + " TEXT,"
@@ -56,13 +61,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + Utils.COLUMN_UNIT_INGREDIENT + " TEXT,"
                 + Utils.COLUMN_IDRECIPE + " TEXT" + ")";
         db.execSQL(CREATE_TABLE_INGREDIENT);
-
+//tab planning
         String CREATE_TABLE_PLANING = "CREATE TABLE " + Utils.Table_Planing + "("
                 + Utils.COLUMN_ID_PLANING + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + Utils.COLUMN_NAME_PLANING + " TEXT,"
                 + Utils.COLUMN_DATE_PLANING + " TEXT,"
                 + Utils.COLUMN_TIME_PLANING + " TEXT" + ")";
         db.execSQL(CREATE_TABLE_PLANING);
+
+
 
 
     }
@@ -82,7 +89,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(Utils.COLUMN_PRENOM, user.getPrenom());
         values.put(Utils.COLUMN_EMAIL, user.getEmail());
         values.put(Utils.COLUMN_PASSWORD, user.getPassword());
+        values.put(Utils.COLUMN_ROLE, user.getRole());
         db.insert(Utils.TABLE_NAME, null, values);
+
         db.close();
     }
 
@@ -90,8 +99,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public boolean checkUser(String email, String password){
         String[] columns = {Utils.COLUMN_EMAIL};
         SQLiteDatabase db = getReadableDatabase();
-        String selection = Utils.COLUMN_EMAIL + "=?" + " and " + Utils.COLUMN_PASSWORD + "=?";
-        String[] selectionArgs = {email, password};
+        String selection = Utils.COLUMN_EMAIL + "=?" + " and " + Utils.COLUMN_PASSWORD + "=?" + " and " + Utils.COLUMN_ROLE + "=?" ;
+        String[] selectionArgs = {email, password, "Client"};
+        Cursor cursor = db.query(Utils.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        db.close();
+        if (count > 0)
+            return true;
+        else
+            return false;
+    }
+    public boolean checkAdmin(String email, String password){
+        String[] columns = {Utils.COLUMN_EMAIL};
+        SQLiteDatabase db = getReadableDatabase();
+        String selection = Utils.COLUMN_EMAIL + "=?" + " and " + Utils.COLUMN_PASSWORD + "=?" + " and " + Utils.COLUMN_ROLE + "=?" ;
+        String[] selectionArgs = {email, password, "Admin"};
         Cursor cursor = db.query(Utils.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
         int count = cursor.getCount();
         cursor.close();

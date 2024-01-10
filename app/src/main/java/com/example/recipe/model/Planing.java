@@ -7,6 +7,7 @@ public class Planing {
     private String time;
 
     public Planing() {
+        //planning model
     }
 
     public Planing(int id, String name, String date, String time) {

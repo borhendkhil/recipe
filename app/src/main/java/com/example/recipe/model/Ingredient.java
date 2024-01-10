@@ -1,6 +1,7 @@
 package com.example.recipe.model;
 
 public class Ingredient {
+    //ingred model, add recipe id
     private int id;
     private String name;
     private String quantity;
